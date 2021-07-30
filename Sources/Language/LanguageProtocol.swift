@@ -9,6 +9,8 @@ import Foundation
 
 public protocol LanguageProtocol {
 	var languageCode: String { get }
+	
+	var locale: Locale { get }
 	var localizedDescription: String { get }
 
 	static var defaultLanguage: Self { get }
@@ -21,7 +23,7 @@ public extension LanguageProtocol {
 	}
 	
 	var localizedDescription: String {
-		Self.current.locale.localizedString(forLanguageCode: languageCode)?.capitalized ?? ""
+		locale.localizedString(forLanguageCode: languageCode)?.capitalized ?? ""
 	}
 }
 
